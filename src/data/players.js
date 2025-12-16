@@ -1,0 +1,35 @@
+export const initialPlayers = [
+  { id: 1, name: "אבא", topic: "food", color: "red" },
+  { id: 2, name: "אמא", topic: "animals", color: "gray" },
+  { id: 3, name: "רותי", topic: "sports", color: "green" },
+  { id: 4, name: "אורי", topic: "music", color: "yellow" },
+  { id: 5, name: "נחמי", topic: "history", color: "blue" },
+  { id: 6, name: "מנחם", topic: "fashion", color: "beige" },
+  { id: 7, name: "חוי", topic: "geography", color:"gold" },
+  { id: 8, name: "מוישי", topic: "holidays", color: "purple" },
+  { id: 9, name: "דבורי", topic: "movies", color: "orange" },
+  { id: 10, name: "ציפי", topic: "science", color: "lightgreen" },
+  { id: 11, name: "דודי", topic: "technology", color: "lightblue" },
+  { id: 12, name: "תמי", topic: "literature", color: "pink" },
+  { id: 13, name: "יעלי", topic: "art", color: "silver" },
+  { id: 14, name: "אפרת", topic: "travel", color: "brown" },
+  { id: 15, name: "מלי", topic: "nature", color: "aqua" },
+];
+
+export const hebrewTopic = {
+  food: "אוכל",
+  animals: "חיות",
+  sports: "ספורט",
+  music: "כלי נגינה",
+  history: "היסטוריה",
+  geography: "גיאוגרפיה",
+  holidays: "חגים",
+  movies: "סרטים",
+  science: "מדע",
+  technology: "טכנולוגיה",
+  literature: "ספרות",
+  art: "אמנות",
+  travel: "טיולים",
+  nature: "טבע",
+  fashion: "אופנה"
+};
