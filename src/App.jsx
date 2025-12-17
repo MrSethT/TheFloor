@@ -9,33 +9,43 @@ export default function App() {
   const [selected, setSelected] = useState([]);
   const [battle, setBattle] = useState(null);
 
-  const onTileClick = (player) => {
-    if (selected.some((p) => p.id === player.id)) return;
-    const sel = [...selected, player];
-    setSelected(sel);
-    if (sel.length === 2) {
-      setBattle({ p1: sel[0], p2: sel[1], topic: sel[1].topic });
-      setSelected([]);
-      setScreen("battle");
-    }
-  };
+const onTileClick = (tile) => {
+  if (selected.some((t) => t.ownerId === tile.ownerId)) return;
 
-  const onBattleEnd = (winner, loser) => {
-    setBoard((prev) =>
-      prev.map((p) =>
-        p.id === loser.id
-          ? {
-              ...p,
-              name: winner.name,
-              topic: winner.topic,
-              color: winner.color,
-            }
-          : p
-      )
-    );
-    setBattle(null);
-    setScreen("arena");
-  };
+  const sel = [...selected, tile];
+  setSelected(sel);
+
+  if (sel.length === 2) {
+    setBattle({
+      p1: sel[0],
+      p2: sel[1],
+      topic: sel[1].topic,
+    });
+    setSelected([]);
+    setScreen("battle");
+  }
+};
+
+
+const onBattleEnd = (winner, loser) => {
+  debugger;
+  setBoard((prev) =>
+    prev.map((tile) =>
+      tile.ownerId === loser.ownerId
+        ? {
+            ...tile,
+            ownerId: winner.ownerId,
+            name: winner.name,
+            topic: winner.topic,
+            color: winner.color,
+          }
+        : tile
+    )
+  );
+
+  setBattle(null);
+  setScreen("arena");
+};
 
   return screen === "arena" ? (
     <ArenaBoard board={board} selected={selected} onTileClick={onTileClick} />

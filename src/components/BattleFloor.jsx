@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { imageMap } from "../data/images";
 
 export function BattleFloor({ battle, onEnd }) {
   const { p1, p2, topic } = battle;
-
   const images = imageMap[topic] || [];
 
   const [index, setIndex] = useState(0);
-  const [turn, setTurn] = useState(p1);
+  const [turn, setTurn] = useState(p1); // השחקן הפעיל
   const [showAnswer, setShowAnswer] = useState(false);
 
   const [time, setTime] = useState({
@@ -15,52 +14,43 @@ export function BattleFloor({ battle, onEnd }) {
     [p2.id]: 30,
   });
 
-  const [score, setScore] = useState({
-    [p1.id]: 0,
-    [p2.id]: 0,
-  });
-
-  const locked = useRef(false);
-  const ended = useRef(false);
+  const [ended, setEnded] = useState(false);
+  const [locked, setLocked] = useState(false);
 
   // =============================
-  // ⏱️ טיימר לפי תור
+  // טיימר
   // =============================
   useEffect(() => {
-    if (ended.current) return;
+    if (ended) return;
 
     const timer = setInterval(() => {
-      setTime((prev) => {
-        const currentTime = prev[turn.id] - 1;
+      setTime(prev => {
+        const currentId = turn.id;
+        const newTime = prev[currentId] - 1;
 
-        if (currentTime <= 0) {
-          ended.current = true;
+        if (newTime <= 0) {
           clearInterval(timer);
-          finishBattle();
+          finishBattle(prev); // שולחים את הזמן העדכני
           return prev;
         }
 
-        return {
-          ...prev,
-          [turn.id]: currentTime,
-        };
+        return { ...prev, [currentId]: newTime };
       });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [turn]);
+  }, [turn, ended]);
 
   // =============================
   // סיום סיבוב
   // =============================
-  const finishBattle = () => {
-    if (ended.current) return;
-    ended.current = true;
+  const finishBattle = (finalTime) => {
+    debugger;
+    if (ended) return;
+    setEnded(true);
 
-    const winner =
-      score[p1.id] >= score[p2.id] ? p1 : p2;
-    const loser =
-      winner.id === p1.id ? p2 : p1;
+    const winner = finalTime[p1.id] > finalTime[p2.id] ? p1 : p2;
+    const loser = winner.id === p1.id ? p2 : p1;
 
     onEnd(winner, loser);
   };
@@ -69,27 +59,22 @@ export function BattleFloor({ battle, onEnd }) {
   // מעבר תמונה
   // =============================
   const nextImage = () => {
-    if (ended.current) return;
-
+    if (ended) return;
     if (index + 1 >= images.length) {
-      finishBattle();
+      finishBattle(time);
       return;
     }
-
-    setIndex((i) => i + 1);
+    setIndex(i => i + 1);
     setShowAnswer(false);
-    locked.current = false;
+    setLocked(false);
   };
 
+  // =============================
+  // פעולות המשתמש
+  // =============================
   const onYes = () => {
-    if (locked.current || ended.current) return;
-
-    locked.current = true;
-
-    setScore((s) => ({
-      ...s,
-      [turn.id]: s[turn.id] + 1,
-    }));
+    if (locked || ended) return;
+    setLocked(true);
 
     setTurn(turn.id === p1.id ? p2 : p1);
     setShowAnswer(true);
@@ -97,68 +82,43 @@ export function BattleFloor({ battle, onEnd }) {
     setTimeout(nextImage, 600);
   };
 
-const onNo = () => {
-  if (locked.current || ended.current) return;
+  const onNo = () => {
+    if (locked || ended) return;
+    setLocked(true);
 
-  locked.current = true;
+    setTime(prev => {
+      const currentId = turn.id;
+      const newTime = prev[currentId] - 3;
 
-  setTime((prev) => {
-    const newTime = prev[turn.id] - 3;
+      if (newTime <= 0) {
+        finishBattle({ ...prev, [currentId]: 0 });
+        return prev;
+      }
 
-    if (newTime <= 0) {
-      ended.current = true;
-      finishBattle();
-      return prev;
-    }
+      return { ...prev, [currentId]: newTime };
+    });
 
-    return {
-      ...prev,
-      [turn.id]: newTime,
-    };
-  });
-
-  setShowAnswer(true);
-  setTimeout(nextImage, 600);
-};
-
+    setShowAnswer(true);
+    setTimeout(nextImage, 600);
+  };
 
   // =============================
   // מקלדת
   // =============================
-useEffect(() => {
-  const yesKeys = new Set([
-    "v",
-    "V",
-    "ArrowRight",
-    // "ArrowUp",
-    "ה",
+  useEffect(() => {
+    const yesKeys = new Set(["v","V","ArrowRight","ה"]);
+    const noKeys = new Set(["x","X","ArrowLeft","ס"]);
 
-  ]);
+    const handleKey = (e) => {
+      if (yesKeys.has(e.key)) onYes();
+      if (noKeys.has(e.key)) onNo();
+    };
 
-  const noKeys = new Set([
-    "x",
-    "X",
-    "ArrowLeft",
-    // "ArrowDown",
-    "ס",
-  ]);
-
-  const handleKey = (e) => {
-    if (yesKeys.has(e.key)) {
-      onYes();
-    }
-
-    if (noKeys.has(e.key)) {
-      onNo();
-    }
-  };
-
-  window.addEventListener("keydown", handleKey);
-  return () => window.removeEventListener("keydown", handleKey);
-}, [turn, index]);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [turn, locked, ended]);
 
   if (!images[index]) return null;
-
   const current = images[index];
 
   return (
@@ -166,23 +126,11 @@ useEffect(() => {
       <h2>{p1.name} מול {p2.name}</h2>
       <h3>נושא: {topic}</h3>
 
-      <h2>
-        ⏱️ {p1.name}: {time[p1.id]} | {p2.name}: {time[p2.id]}
-      </h2>
-
+      <h2>⏱️ {p1.name}: {time[p1.id]} | {p2.name}: {time[p2.id]}</h2>
       <h3>תור: {turn.name}</h3>
 
-      <img
-        src={current.src}
-        alt={current.answer}
-        style={{ width: 300, height: 300, objectFit: "cover" }}
-      />
-
+      <img src={current.src} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
       {showAnswer && <h2>{current.answer}</h2>}
-
-      <p>
-        ניקוד — {p1.name}: {score[p1.id]} | {p2.name}: {score[p2.id]}
-      </p>
 
       <p>Y = ידע | X = לא ידע</p>
     </div>
