@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { imageMap } from "../data/images";
+import { imageMap } from "../data/images.js";
+const imageResources = require.context('../../assets/', true);
 
 export function BattleFloor({ battle, onEnd }) {
   const { p1, p2, topic } = battle;
   const images = imageMap[topic] || [];
 
   const [index, setIndex] = useState(0);
-  const [turn, setTurn] = useState(p1); // השחקן הפעיל
+  const [turn, setTurn] = useState(p1); // active player
   const [showAnswer, setShowAnswer] = useState(false);
 
   const [time, setTime] = useState({
@@ -18,7 +19,7 @@ export function BattleFloor({ battle, onEnd }) {
   const [locked, setLocked] = useState(false);
 
   // =============================
-  // טיימר
+  // Timer
   // =============================
   useEffect(() => {
     if (ended) return;
@@ -30,7 +31,7 @@ export function BattleFloor({ battle, onEnd }) {
 
         if (newTime <= 0) {
           clearInterval(timer);
-          finishBattle(prev); // שולחים את הזמן העדכני
+          finishBattle(prev); 
           return prev;
         }
 
@@ -42,21 +43,21 @@ export function BattleFloor({ battle, onEnd }) {
   }, [turn, ended]);
 
   // =============================
-  // סיום סיבוב
+  // End of round
   // =============================
   const finishBattle = (finalTime) => {
-    debugger;
+    
     if (ended) return;
     setEnded(true);
 
     const winner = finalTime[p1.id] > finalTime[p2.id] ? p1 : p2;
     const loser = winner.id === p1.id ? p2 : p1;
 
-    onEnd(winner, loser);
+    onEnd(winner, topic);
   };
 
   // =============================
-  // מעבר תמונה
+  // Next image
   // =============================
   const nextImage = () => {
     if (ended) return;
@@ -70,7 +71,7 @@ export function BattleFloor({ battle, onEnd }) {
   };
 
   // =============================
-  // פעולות המשתמש
+  // User actions
   // =============================
   const onYes = () => {
     if (locked || ended) return;
@@ -103,11 +104,11 @@ export function BattleFloor({ battle, onEnd }) {
   };
 
   // =============================
-  // מקלדת
+  // Keyboard
   // =============================
   useEffect(() => {
-    const yesKeys = new Set(["v","V","ArrowRight","ה"]);
-    const noKeys = new Set(["x","X","ArrowLeft","ס"]);
+    const yesKeys = new Set(["y","Y","ArrowRight"]); 
+    const noKeys = new Set(["x","X","ArrowLeft"]); 
 
     const handleKey = (e) => {
       if (yesKeys.has(e.key)) onYes();
@@ -120,19 +121,20 @@ export function BattleFloor({ battle, onEnd }) {
 
   if (!images[index]) return null;
   const current = images[index];
+  const currentImage = imageResources(current.src);
 
   return (
     <div style={{ textAlign: "center" }}>
-      <h2>{p1.name} מול {p2.name}</h2>
-      <h3>נושא: {topic}</h3>
+      <h2>{p1.name} vs {p2.name}</h2>
+      <h3>Topic: {topic}</h3>
 
       <h2>⏱️ {p1.name}: {time[p1.id]} | {p2.name}: {time[p2.id]}</h2>
-      <h3>תור: {turn.name}</h3>
+      <h3>Turn: {turn.name}</h3>
 
-      <img src={current.src} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
+      <img src={currentImage} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
       {showAnswer && <h2>{current.answer}</h2>}
 
-      <p>Y = ידע | X = לא ידע</p>
+      <p>Y = Knew | X = Didn't know</p>
     </div>
   );
 }

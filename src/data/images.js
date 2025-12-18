@@ -1,106 +1,102 @@
 export const imageMap = {
 food: [
-{ src: "/assets/food/bread.jpg", answer: "לחם" },
-{ src: "/assets/food/soup.jpg", answer: "מרק" },
-{ src: "/assets/food/eshel.jpg", answer: "אשל" },
-{ src: "/assets/food/chease.jpg", answer: "גבינה" },
-{ src: "/assets/food/eggSalad.jpg", answer: "סלט ביצים" },
-{ src: "/assets/food/icecream.jpg", answer: "גלידה" },
-{ src: "/assets/food/omlet.jpg", answer: "חביתה" },
-{ src: "/assets/food/meatbolls.jpg", answer: "קציצות" },
-{ src: "/assets/food/shnitzel.jpg", answer: "שניצל" },
-{ src: "/assets/food/yellowchease.jpg", answer: "גבינה צהובה" },
-{ src: "/assets/food/wippedcream.jpg", answer: "קצפת" },
-{ src: "/assets/food/marokayfish.jpg", answer: "דג מרוקאי" },
-{ src: "/assets/food/mahpotato.jpg", answer: "פירה תפוח אדמה" },
-{ src: "/assets/food/bolonez.jpg", answer: "בולונז" },
-{ src: "/assets/food/Stirfriedvegetables.jpg", answer: "מוקפצים" },
-{ src: "/assets/food/sushi.jpg", answer: "סושי" },
-{ src: "/assets/food/shipudim.jpg", answer: "שיפודים " },
-{ src: "/assets/food/shakshuka.jpg", answer: "שקשוקה " },
-{ src: "/assets/food/kuskus.jpg", answer: "קוסקוס " },
-{ src: "/assets/food/rice.jpg", answer: "אורז " },
-{ src: "/assets/food/majadra.jpg", answer: "מג'דרה " },
-{ src: "/assets/food/humusbasar.jpg", answer: "חומוס-בשר " },
-{ src: "/assets/food/lazanya.jpg", answer: "לזניה " },
-{ src: "/assets/food/piza.jpg", answer: "פיצה " },
-{ src: "/assets/food/musaka.jpg", answer: "מוסקה " },
-{ src: "/assets/food/sosegeinroll.jpg", answer: "נקניקיה בלחמניה " },
-{ src: "/assets/food/tako.jpg", answer: "טאקו " },
-{ src: "/assets/food/shuarma.jpg", answer: "שווארמה " },
-{ src: "/assets/food/napolyoncake.jpg", answer: "עוגת נפוליון " },
+{ src: "./food/bread.jpg", answer: "bread" },
+{ src: "./food/soup.jpg", answer: "soup" },
+{ src: "./food/eshel.jpg", answer: "artichoke" },
+{ src: "./food/chease.jpg", answer: "cheese" },
+{ src: "./food/eggSalad.jpg", answer: "egg salad" },
+{ src: "./food/icecream.jpg", answer: "ice cream" },
+{ src: "./food/omlet.jpg", answer: "omelet" },
+{ src: "./food/meatbolls.jpg", answer: "meatballs" },
+{ src: "./food/shnitzel.jpg", answer: "schnitzel" },
+{ src: "./food/yellowchease.jpg", answer: "yellow cheese" },
+{ src: "./food/wippedcream.jpg", answer: "whipped cream" },
+{ src: "./food/marokayfish.jpg", answer: "Moroccan fish" },
+{ src: "./food/mahpotato.jpg", answer: "mashed potatoes" },
+{ src: "./food/bolonez.jpg", answer: "bolognese" },
+{ src: "./food/Stirfriedvegetables.jpg", answer: "stir-fried vegetables" },
+{ src: "./food/sushi.jpg", answer: "sushi" },
+{ src: "./food/shipudim.jpg", answer: "skewers" },
+{ src: "./food/shakshuka.jpg", answer: "shakshuka" },
+{ src: "./food/kuskus.jpg", answer: "couscous" },
+{ src: "./food/rice.jpg", answer: "rice" },
+{ src: "./food/majadra.jpg", answer: "majadra" },
+{ src: "./food/humusbasar.jpg", answer: "hummus with meat" },
+{ src: "./food/lazanya.jpg", answer: "lasagna" },
+{ src: "./food/piza.jpg", answer: "pizza" },
+{ src: "./food/musaka.jpg", answer: "moussaka" },
+{ src: "./food/sosegeinroll.jpg", answer: "hot dog" },
+{ src: "./food/tako.jpg", answer: "taco" },
+{ src: "./food/shuarma.jpg", answer: "shawarma" },
+{ src: "./food/napolyoncake.jpg", answer: "Napoleon cake" },
 ],
 animals: [
-{ src: "/assets/animals/BEAR.jpg", answer: "דב" },
-{ src: "/assets/animals/Beaver.jpg", answer: "בונה" },
-{ src: "/assets/animals/CAMEL.jpg", answer: "גמל" },
-{ src: "/assets/animals/CAT.jpg", answer: "חתול" },
-{ src: "/assets/animals/COW.jpg", answer: "פרה" },
-{ src: "/assets/animals/CROCODDILE.jpg", answer: "תנין" },
-{ src: "/assets/animals/DOLPHIN.jpeg", answer: "דולפין" },
-{ src: "/assets/animals/DONKEY.jpg", answer: "חמור" },
-{ src: "/assets/animals/EAGLE.jpg", answer: "נשר" },
-{ src: "/assets/animals/FOX.jpg", answer: "שועל" },
-{ src: "/assets/animals/FLAMINGO.jpg", answer: "פלמינגו" },
-{ src: "/assets/animals/elephant.jpg", answer: "פיל" },
-{ src: "/assets/animals/GOAT.jpg", answer: "עז" },
-{ src: "/assets/animals/Giraffe.jpg", answer: "ג'ירפה" },
-{ src: "/assets/animals/FROG.jpg", answer: "צפרדע" },
-{ src: "/assets/animals/horse.jpg", answer: "סוס" },
-{ src: "/assets/animals/Hippopotamus.jpg", answer: "היפופוטם" },
-{ src: "/assets/animals/Hedgehog.jpg", answer: "קיפוד" },
-{ src: "/assets/animals/MONKEY.jpg", answer: "קוף" },
-{ src: "/assets/animals/LION.jpeg", answer: "אריה" },
-{ src: "/assets/animals/ZEBRA.jpeg", answer: "זברה" },
-{ src: "/assets/animals/WOLF.jpeg", answer: "זאב" },
-{ src: "/assets/animals/squirrel.jpeg", answer: "סנאי" },
-{ src: "/assets/animals/KOALA.jpeg", answer: "קוואלה" },
-{ src: "/assets/animals/PANDA.jpeg", answer: "פנדה" },
-{ src: "/assets/animals/OTTER.jpg", answer: "לוטרה" },
-{ src: "/assets/animals/ostrich.jpg", answer: "יען" },
-{ src: "/assets/animals/HAMSTER.jpeg", answer: "ארנבת" },
-{ src: "/assets/animals/RABBIT.jpg", answer: "שפן" },
-{ src: "/assets/animals/PENGUIN.jpg", answer: "פינגוין" },
-{ src: "/assets/animals/SHEEP.jpg", answer: "כבשה" },
-{ src: "/assets/animals/SHARK.jpg", answer: "כריש" },
-{ src: "/assets/animals/ROOSTER.jpg", answer: "תרנגול" },
-{ src: "/assets/animals/SNAKE.jpg", answer: "נחש" },
+{ src: "./animals/BEAR.jpg", answer: "bear" },
+{ src: "./animals/Beaver.jpg", answer: "beaver" },
+{ src: "./animals/CAMEL.jpg", answer: "camel" },
+{ src: "./animals/CAT.jpg", answer: "cat" },
+{ src: "./animals/COW.jpg", answer: "cow" },
+{ src: "./animals/CROCODDILE.jpg", answer: "crocodile" },
+{ src: "./animals/DOLPHIN.jpeg", answer: "dolphin" },
+{ src: "./animals/DONKEY.jpg", answer: "donkey" },
+{ src: "./animals/EAGLE.jpg", answer: "eagle" },
+{ src: "./animals/FOX.jpg", answer: "fox" },
+{ src: "./animals/FLAMINGO.jpg", answer: "flamingo" },
+{ src: "./animals/elephant.jpg", answer: "elephant" },
+{ src: "./animals/GOAT.jpg", answer: "goat" },
+{ src: "./animals/Giraffe.jpg", answer: "giraffe" },
+{ src: "./animals/FROG.jpg", answer: "frog" },
+{ src: "./animals/horse.jpg", answer: "horse" },
+{ src: "./animals/Hippopotamus.jpg", answer: "hippopotamus" },
+{ src: "./animals/Hedgehog.jpg", answer: "hedgehog" },
+{ src: "./animals/MONKEY.jpg", answer: "monkey" },
+{ src: "./animals/LION.jpeg", answer: "lion" },
+{ src: "./animals/ZEBRA.jpeg", answer: "zebra" },
+{ src: "./animals/WOLF.jpeg", answer: "wolf" },
+{ src: "./animals/squirrel.jpeg", answer: "squirrel" },
+{ src: "./animals/KOALA.jpeg", answer: "koala" },
+{ src: "./animals/PANDA.jpeg", answer: "panda" },
+{ src: "./animals/OTTER.jpg", answer: "otter" },
+{ src: "./animals/ostrich.jpg", answer: "ostrich" },
+{ src: "./animals/HAMSTER.jpeg", answer: "hamster" },
+{ src: "./animals/RABBIT.jpg", answer: "rabbit" },
+{ src: "./animals/PENGUIN.jpg", answer: "penguin" },
+{ src: "./animals/SHEEP.jpg", answer: "sheep" },
+{ src: "./animals/SHARK.jpg", answer: "shark" },
+{ src: "./animals/ROOSTER.jpg", answer: "rooster" },
+{ src: "./animals/SNAKE.jpg", answer: "snake" },
 
 ],
 flags: [
-{ src: "/assets/flags/Argentina.jpg", answer: "ארגנטינה" },
-{ src: "/assets/flags/Austria.jpg", answer: "אוסטריה" },
-{ src: "/assets/flags/BELGIUM.jpg", answer: "בלגיה" },
-{ src: "/assets/flags/BRAZIL.jpg", answer: "ברזיל" },
-{ src: "/assets/flags/CANADA.jpg", answer: "קנדה" },
-{ src: "/assets/flags/CHINA.jpg", answer: "סין" },
-{ src: "/assets/flags/CROACIA.jpg", answer: "קרואטיה" },
-{ src: "/assets/flags/CYPRUS.jpg", answer: "קפריסין" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "דנמרק" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "ארגנטינה" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "ארגנטינה" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "ארגנטינה" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "ארגנטינה" },
-{ src: "/assets/flags/DENMARK.jpg", answer: "ארגנטינה" },
+{ src: "./flags/Argentina.jpg", answer: "Argentina" },
+{ src: "./flags/Austria.jpg", answer: "Austria" },
+{ src: "./flags/BELGIUM.jpg", answer: "Belgium" },
+{ src: "./flags/BRAZIL.jpg", answer: "Brazil" },
+{ src: "./flags/CANADA.jpg", answer: "Canada" },
+{ src: "./flags/CHINA.jpg", answer: "China" },
+{ src: "./flags/CROACIA.jpg", answer: "Croatia" },
+{ src: "./flags/CYPRUS.jpg", answer: "Cyprus" },
+{ src: "./flags/DENMARK.jpg", answer: "Denmark" },
 
 ],
 
-holidays: [{ src: "/assets/holidays/football.jpg", answer: "כדורגל" }],
-geography: [{ src: "/assets/geography/israel.jpg", answer: "ישראל" }],
-history: [{ src: "/assets/history/pyramid.jpg", answer: "הפירמידות" }],
-music: [{ src: "/assets/music/piano.jpg", answer: "פסנתר" }]
+holidays: [{ src: "./holidays/football.jpg", answer: "football" }],
+geography: [{ src: "./geography/israel.jpg", answer: "Israel" }],
+history: [{ src: "./history/pyramid.jpg", answer: "pyramids" }],
+music: [{ src: "./music/piano.jpg", answer: "piano" }]
 };
 
-import fs from "fs";
-import path from "path";
+//import fs from "fs";
+//import path from "path";
 
-// נתיב תיקיית הבסיס שלך (לדוגמה: public/assets)
-const baseDir = path.join(process.cwd(), "public/assets");
+// Base directory path (e.g.: public.)
+//const baseDir = path.join(process.cwd(), "public.");
+const baseDir = "C:\\inetpub\\wwwroot\\thefloor\\TheFloor\\public\\assets";
 
-// הקטגוריות שלך
-const categories = ["flags", "food"]; // אפשר להוסיף עוד
+// Your categories
+const categories = ["flags", "food"]; // Can add more
 
-// מילון תרגום לדוגמא (אפשר להרחיב)
+// Translation dictionary example (can expand)
 const translations = {
   "Argentina": "ארגנטינה",
   "Austria": "אוסטריה",
@@ -143,31 +139,31 @@ const translations = {
 };
 
 
-// פונקציה ליצירת מערך קטגוריה
-function createCategoryArray(category) {
-  const dirPath = path.join(baseDir, category);
-  if (!fs.existsSync(dirPath)) {
-    console.warn(`תיקייה לא קיימת: ${category}`);
-    return [];
-  }
+// Function to create category array
+// function createCategoryArray(category) {
+//   const dirPath = path.join(baseDir, category);
+//   if (true || !fs.existsSync(dirPath)) {
+//     console.warn(`Directory not found: ${category}`);
+//     return [];
+//   }
 
-  const files = fs.readdirSync(dirPath);
+//   const files = fs.readdirSync(dirPath);
 
-  return files.map(file => {
-    const nameWithoutExt = file.replace(/\.[^/.]+$/, "");
-    const answer = translations[nameWithoutExt] || nameWithoutExt;
-    return {
-      src: `/assets/${category}/${file}`,
-      answer
-    };
-  });
-}
+//   return files.map(file => {
+//     const nameWithoutExt = file.replace(/\.[^/.]+$/, "");
+//     const answer = translations[nameWithoutExt] || nameWithoutExt;
+//     return {
+//       src: `./${category}/${file}`,
+//       answer
+//     };
+//   });
+// }
 
-// יצירת מערכים לכל הקטגוריות
-const data = {};
-categories.forEach(cat => {
-  data[cat] = createCategoryArray(cat);
-});
+// // Create arrays for each category
+// const data = {};
+// categories.forEach(cat => {
+//   data[cat] = createCategoryArray(cat);
+// });
 
-// אפשר גם לשמור לקובץ JSON:
-fs.writeFileSync("categories.json", JSON.stringify(data, null, 2), "utf-8");
+// // Can also save to JSON file:
+// fs.writeFileSync("categories.json", JSON.stringify(data, null, 2), "utf-8");
