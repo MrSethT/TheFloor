@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArenaBoard } from "./components/ArenaBoard";
 import { BattleFloor } from "./components/BattleFloor";
-import { topicMap } from "./data/topics.js";
+import { topicMap } from "./data/topicMap";
 
 import './App.css';
 
@@ -21,7 +21,6 @@ function App() {
   };
 
   const onEnd = (winner, topic) => {
-    debugger;
     // Find the board item by topic
     const updatedBoard = board.map(item =>
       item.topic === topic ? { ...item, owner: winner } : item

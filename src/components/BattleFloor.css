@@ -47,6 +47,7 @@
       background: linear-gradient(#0b2f8a, #07215f);
       border: 4px solid var(--gold);
       box-shadow: inset 0 0 0 2px rgba(255,255,255,.18);
+      opacity: .35;
     }
 
     /* angled outer edge */
@@ -58,7 +59,7 @@
       clip-path: polygon(8% 0, 100% 0, 100% 100%, 8% 100%, 0 50%);
       border-left:none;
     }
-
+  
     /* top name ribbons */
     .nameplate{
       position:absolute;
@@ -75,6 +76,7 @@
       font-weight:800;
       letter-spacing:1px;
       text-transform:uppercase;
+      opacity:.35; 
     }
 
     .nameplate.left{
@@ -86,9 +88,10 @@
       right: 110px;
       border-left:none;
       clip-path: polygon(8% 0, 100% 0, 100% 100%, 8% 100%, 0 50%);
-      opacity:.35; /* faded like the screenshot */
     }
-
+   .active{
+      opacity:1; 
+    }
     .state{
       position:absolute;
       top: 6px;
@@ -153,6 +156,7 @@
       font-weight: 800;
       color: rgba(255,255,255,1.0);
       text-shadow: 0 1px 0 rgba(0,0,0,.35);
+      text-transform: uppercase;
     }
 
     /* tiny “notches” where the center meets the score blocks */

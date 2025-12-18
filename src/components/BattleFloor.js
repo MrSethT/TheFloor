@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { imageMap } from "../data/images.js";
+import { imageMap } from "../data/imageMap.js";
 import "./BattleFloor.css";
-
-const imageResources = require.context('../../assets/', true);
 
 export function BattleFloor({ battle, onEnd }) {
   const { p1, p2, topic } = battle;
@@ -123,29 +121,28 @@ export function BattleFloor({ battle, onEnd }) {
 
   if (!images[index]) return null;
   const current = images[index];
-  const currentImage = imageResources(current.src);
-   
+   const answer = current.answer
   return (
 <div>
-  <img src={currentImage} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
-  <div class="hud" role="img" aria-label="Scoreboard: Armand 44 vs Matt 45, event Push-Ups">
+  <img src={current.src} alt={answer} style={{ height: 300, objectFit: "cover" }} />
+  <div className="hud" role="img" aria-label="Scoreboard: Armand 44 vs Matt 45, event Push-Ups">
     {/* <!-- top ribbons --> */}
-    <div class="nameplate left">{p1.name}</div>
-    <div class="state left">KS</div>
+    <div className={"nameplate left " + (turn.id === p1.id ? "active" : "")}>{p1.name}</div>
+    <div className="state left">KS</div>
 
-    <div class="nameplate right">{p2.name}</div>
-    <div class="state right">TX</div>
+    <div className={"nameplate right " + (turn.id === p2.id ? "active" : "")}>{p2.name}</div>
+    <div className="state right">TX</div>
 
     {/* <!-- main row --> */}
-    <div class="score left">{time[p1.id]} </div>
-    <div class="join left"></div>
+    <div className={"score left " + (turn.id === p1.id ? "active" : "")}>{time[p1.id]} </div>
+    <div className="join left"></div>
 
-    <div class="center">
-      <div class="event"> {showAnswer && current.answer}</div>
+    <div className="center">
+      <div className="event"> {showAnswer && answer}</div>
     </div>
 
-    <div class="join right"></div>
-    <div class="score right" style={{ opacity: .75 }}>{time[p2.id]}</div>
+    <div className="join right"></div>
+    <div className={"score right " + (turn.id === p2.id ? "active" : "")}>{time[p2.id]}</div>
   </div>
     <p className="footer">Y = Knew | X = Didn't know</p>
 </div>
