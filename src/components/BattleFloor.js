@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { imageMap } from "../data/images.js";
+import "./BattleFloor.css";
+
 const imageResources = require.context('../../assets/', true);
 
 export function BattleFloor({ battle, onEnd }) {
@@ -122,19 +124,31 @@ export function BattleFloor({ battle, onEnd }) {
   if (!images[index]) return null;
   const current = images[index];
   const currentImage = imageResources(current.src);
-
+   
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>{p1.name} vs {p2.name}</h2>
-      <h3>Topic: {topic}</h3>
+<div>
+  <img src={currentImage} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
+  <div class="hud" role="img" aria-label="Scoreboard: Armand 44 vs Matt 45, event Push-Ups">
+    {/* <!-- top ribbons --> */}
+    <div class="nameplate left">{p1.name}</div>
+    <div class="state left">KS</div>
 
-      <h2>⏱️ {p1.name}: {time[p1.id]} | {p2.name}: {time[p2.id]}</h2>
-      <h3>Turn: {turn.name}</h3>
+    <div class="nameplate right">{p2.name}</div>
+    <div class="state right">TX</div>
 
-      <img src={currentImage} alt={current.answer} style={{ width: 300, height: 300, objectFit: "cover" }} />
-      {showAnswer && <h2>{current.answer}</h2>}
+    {/* <!-- main row --> */}
+    <div class="score left">{time[p1.id]} </div>
+    <div class="join left"></div>
 
-      <p>Y = Knew | X = Didn't know</p>
+    <div class="center">
+      <div class="event"> {showAnswer && current.answer}</div>
     </div>
+
+    <div class="join right"></div>
+    <div class="score right" style={{ opacity: .75 }}>{time[p2.id]}</div>
+  </div>
+    <p className="footer">Y = Knew | X = Didn't know</p>
+</div>
+
   );
 }

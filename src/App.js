@@ -3,7 +3,6 @@ import { ArenaBoard } from "./components/ArenaBoard";
 import { BattleFloor } from "./components/BattleFloor";
 import { topicMap } from "./data/topics.js";
 
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -22,6 +21,7 @@ function App() {
   };
 
   const onEnd = (winner, topic) => {
+    debugger;
     // Find the board item by topic
     const updatedBoard = board.map(item =>
       item.topic === topic ? { ...item, owner: winner } : item
@@ -33,10 +33,23 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div class="scoreboard">
+        <div>
+          {players[0].name}-
+          {board.filter(cat => cat.owner?.id === players[0].id).length  }
+          </div>
+        <div class="lockup">
+    <div class="the">THE</div>
+    <div class="floor" data-text="FLOOR">FLOOR</div>
+    </div>
+    <div>
+      {players[1].name}-
+          {board.filter(cat => cat.owner?.id === players[1].id).length  }
+    </div>
+  </div>
         {screen}
         <button onClick={() => setScreen("arena")}>Arena</button>
-        <button onClick={() => setScreen("character")}>Character</button>
-        <button onClick={() => setScreen("inventory")}>Inventory</button>
+        <button onClick={() => setScreen("battle")}>Battle</button>
 
       {screen === "arena" ? (
     <ArenaBoard board={board} selected={selected} onTileClick={onTileClick} />
