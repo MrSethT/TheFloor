@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# 🏟️ The Arena – A Trivia Game in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive trivia game inspired by the TV show **"The Floor"**.  
+The game is built as a board of player tiles — each duel is played on a specific topic and is decided by real-time image recognition.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🎮 Game Description
 
-### `npm start`
+- There are **15 players**, each with:
+  - a name
+  - a unique topic
+  - a unique color
+- The game board shows a tile for each player
+- Selecting two tiles creates a **duel**
+- The duel's topic is determined by the second tile selected
+- In a duel:
+  - images are shown according to the topic
+  - each player gets **30 personal seconds**
+  - a correct recognition awards a point and passes the turn
+  - an incorrect recognition shows the answer but does not pass the turn
+- At the end of the round:
+  - a winner is determined
+  - the loser loses their tile
+  - the tile changes color, name, and topic to the winner
+- The game automatically returns to the arena board
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ⌨️ Game Controls
 
-### `npm test`
+- **Y** – the player identified the image correctly  
+- **X** – the player did not recognize the image  
+- No on-screen buttons — the game is intended to be run quickly by a host
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧠 Duel End Conditions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A duel ends when one of the following conditions is met:
+1. One player's time runs out
+2. There are no more images in the category
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In either case — the game automatically returns to the arena board.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🗂️ Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```txt
+src/
+├── components/
+│   ├── ArenaBoard.jsx      # board of tiles
+│   ├── BattleScreen.jsx    # duel/battle screen
+│   └── App.jsx             # screen management and main logic
+│
+├── data/
+│   ├── players.js          # initial list of players
+│   ├── images.js           # images by topic
+│   └── topics.js           # topic names
+│
+├── assets/
+│   ├── food/
+│   ├── animals/
+│   ├── sports/
+│   └── ...
+│
+└── main.jsx
+```
