@@ -29,7 +29,7 @@ export function BattleFloor({ battle, onEnd }) {
         const currentId = turn.id;
         const newTime = prev[currentId] - 1;
 
-        if (newTime <= 0) {
+        if (newTime < 0) {
           clearInterval(timer);
           finishBattle(prev); 
           return prev;
@@ -128,13 +128,13 @@ export function BattleFloor({ battle, onEnd }) {
   <div className="hud" role="img" aria-label="Scoreboard: Armand 44 vs Matt 45, event Push-Ups">
     {/* <!-- top ribbons --> */}
     <div className={"nameplate left " + (turn.id === p1.id ? "active" : "")}>{p1.name}</div>
-    <div className="state left">KS</div>
+    <div className="state left"></div>
 
     <div className={"nameplate right " + (turn.id === p2.id ? "active" : "")}>{p2.name}</div>
-    <div className="state right">TX</div>
+    <div className="state right"></div>
 
     {/* <!-- main row --> */}
-    <div className={"score left " + (turn.id === p1.id ? "active" : "")}>{time[p1.id]} </div>
+    <div className={"score left " + (turn.id === p1.id ? "active" : "") + (time[p1.id] <= 5 ? " red" : "")}>{time[p1.id]} </div>
     <div className="join left"></div>
 
     <div className="center">
@@ -142,7 +142,7 @@ export function BattleFloor({ battle, onEnd }) {
     </div>
 
     <div className="join right"></div>
-    <div className={"score right " + (turn.id === p2.id ? "active" : "")}>{time[p2.id]}</div>
+    <div className={"score right " + (turn.id === p2.id ? "active" : "")  + (time[p2.id] <= 5 ? " red" : "")}>{time[p2.id]}</div>
   </div>
     <p className="footer">Y = Knew | X = Didn't know</p>
 </div>

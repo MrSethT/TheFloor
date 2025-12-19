@@ -1,36 +1,41 @@
 .neon-box {
-    position: relative;
-    background: #2aa7ff; 
-     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-  }
+  position: relative;
+  background: #2aa7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  background-size: 100px;
+}
 
-  /* Outer glow */
-  .neon-box::before {
-    content: "";
-    position: absolute;
-    inset: -6px;
-    border-radius: 2px;
-    border: 2px solid rgba(150, 255, 255, 0.6);
-    box-shadow:
-      0 0 10px rgba(120, 255, 255, 0.9),
-      0 0 20px rgba(120, 255, 255, 0.6),
-      0 0 40px rgba(120, 255, 255, 0.35);
-  }
+/* Outer glow */
+.neon-box::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 2px;
+  border: 2px solid rgba(150, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(120, 255, 255, 0.9),
+    0 0 20px rgba(120, 255, 255, 0.6), 0 0 40px rgba(120, 255, 255, 0.35);
+}
 
-  /* Inner crisp border */
-  .neon-box::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 1px;
-    border: 2px solid rgba(200, 255, 255, 0.95);
-    box-shadow:
-      inset 0 0 6px rgba(255, 255, 255, 0.6);
-  }
+/* Inner crisp border */
+.neon-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1px;
+  border: 2px solid rgba(200, 255, 255, 0.95);
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.neon-box.Right{
+     background-image: url("../../public/right.png");
+}
+.neon-box.Left{
+     background-image: url("../../public/left.png");
+}
