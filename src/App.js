@@ -9,7 +9,7 @@ function App() {
   const [screen, setScreen] = useState("arena");
   const [winner, setWinner] = useState(null);
   const [players, setPlayers] = useState([
-    { id: 1, name: "Left", color: "blue" },
+    { id: 1, name: "Left", color: "darkOrange" },
     { id: 2, name: "Right", color: "green" },
   ]);
   const [board, setBoard] = useState(topicMap);
@@ -44,9 +44,17 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="scoreboard">
-          <div className={"score active " + (winner?.id  === players[0].id ? "winner":"")}  >
+          <div
+            className={
+              "score active " + (winner?.id === players[0].id ? "winner" : "")
+            }
+            style={{
+              backgroundColor:
+                winner?.id === players[0].id ? winner.color : "none",
+            }}
+          >
             {players[0].name} &nbsp;
-            {board.filter((cat) => cat.owner?.id === players[0].name).length}
+            {board.filter((cat) => cat.owner?.id === players[0].id).length}
           </div>
           <div className="lockup">
             <div className="the">THE</div>
@@ -54,7 +62,15 @@ function App() {
               FLOOR
             </div>
           </div>
-          <div className={"score active " + (winner?.id  === players[1].id ? "winner":"")}  >
+          <div
+            className={
+              "score active " + (winner?.id === players[1].id ? "winner" : "")
+            }
+            style={{
+              backgroundColor:
+                winner?.id === players[1].id ? winner.color : "none",
+            }}
+          >
             {players[1].name} &nbsp;
             {board.filter((cat) => cat.owner?.id === players[1].id).length}
           </div>
