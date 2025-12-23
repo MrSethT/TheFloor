@@ -1,6 +1,6 @@
 # 🏟️ The Arena – A Trivia Game in React
 
-An interactive trivia game inspired by the TV show **"The Floor"**.  
+An interactive trivia game built using React inspired by the TV show **"The Floor"**.  
 The game is built as a board of player tiles — each duel is played on a specific topic and is decided by real-time image recognition.
 
 ---
@@ -82,3 +82,13 @@ src/
 |
 
 ```
+---
+
+## 📦 Installation
+
+1. Install NodeJS
+2. Clone project
+3. Run terminal commands in the proj directory
+```txt
+npm install
+npm start
