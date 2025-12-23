@@ -5,7 +5,7 @@ export function ArenaBoard({ board, selected, onTileClick }) {
     <div className="Arena" style={{ display: "grid", gridTemplateColumns: "repeat(5, 20%)", gap: 0 }}>
       {board.map((category) => (
         <div
-          key={category.id}
+          key={category.topic}
           onClick={() => onTileClick(category)}
           className={"neon-box " + (category.owner ? category.owner.name:"")}
              style={{

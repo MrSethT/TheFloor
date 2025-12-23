@@ -2,10 +2,13 @@ import { useState } from "react";
 import { ArenaBoard } from "./components/ArenaBoard";
 import { BattleFloor } from "./components/BattleFloor";
 import { topicMap } from "./data/topicMap";
+import useSound from 'use-sound';
+import wrongSfx from './sounds/wrong.mp3';
 
 import "./App.css";
 
 function App() {
+  const [playWrong] = useSound(wrongSfx);
   const [screen, setScreen] = useState("arena");
   const [winner, setWinner] = useState(null);
   const [players, setPlayers] = useState([
@@ -25,6 +28,7 @@ function App() {
   };
 
   const onEnd = (winner, topic) => {
+    playWrong();
     setWinner(winner);
 
     // Find the board item by topic

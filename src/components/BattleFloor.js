@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { imageMap } from "../data/imageMap.js";
+import useSound from 'use-sound';
+import countdownSfx from '../sounds/arcade-countdown.mp3';
+import rightSfx from '../sounds/right.mp3';
+import wrongSfx from '../sounds/wrong.mp3';
+
 import "./BattleFloor.css";
 
 export function BattleFloor({ battle, onEnd }) {
   const { p1, p2, topic } = battle;
   const images = imageMap[topic] || [];
+
+const [playCountdown] = useSound(countdownSfx);
+const [playRight] = useSound(rightSfx);
+const [playWrong] = useSound(wrongSfx);
 
   const [index, setIndex] = useState(-3);
   const [turn, setTurn] = useState(p1);
@@ -107,6 +116,7 @@ export function BattleFloor({ battle, onEnd }) {
   const onYes = () => {
     if (locked || ended) return;
     setLocked(true);
+    playRight();
 
     setTurn((t) => (t.id === p1.id ? p2 : p1));
     setShowAnswer(true);
@@ -117,7 +127,8 @@ export function BattleFloor({ battle, onEnd }) {
   const onNo = () => {
     if (locked || ended) return;
     setLocked(true);
-
+    playWrong();
+    
     setTime((prev) => {
       const currentId = turn.id;
       const newTime = prev[currentId] - 3;
@@ -154,13 +165,15 @@ export function BattleFloor({ battle, onEnd }) {
   const inCountdown = index < 0;
   const answer = inCountdown ? "" : current?.answer ?? "";
 
+  if (index === -3)  playCountdown();
+
   return (
     <div>
       {inCountdown ? (
         <div>
-          <p className={Math.abs(index) == 3 ? "animated" : "hidden"}>3</p>
-          <p className={Math.abs(index) == 2 ? "animated" : "hidden"}>2</p>
-          <p className={Math.abs(index) == 1 ? "animated" : "hidden"}>1</p>
+          <p className={Math.abs(index) === 3 ? "animated" : "hidden"}>3</p>
+          <p className={Math.abs(index) === 2 ? "animated" : "hidden"}>2</p>
+          <p className={Math.abs(index) === 1 ? "animated" : "hidden"}>1</p>
         </div>
       ) : (
         current && (
@@ -172,7 +185,7 @@ export function BattleFloor({ battle, onEnd }) {
         )
       )}
 
-      <div className="hud" role="img" aria-label="Scoreboard">
+      <div className="hud" style={{height:40}} role="img" aria-label="Scoreboard">
         <div
           className={"nameplate left " + (turn.id === p1.id ? "active" : "")}
         >
@@ -186,10 +199,11 @@ export function BattleFloor({ battle, onEnd }) {
           {p2.name}
         </div>
         <div className="state right"></div>
-
+</div>
+<div className="hud" role="img" aria-label="Scoreboard">
         <div
           className={
-            "score left " +
+            "score left big " +
             (turn.id === p1.id ? "active" : "") +
             (time[p1.id] <= 5 ? " red" : "")
           }
@@ -205,7 +219,7 @@ export function BattleFloor({ battle, onEnd }) {
         <div className="join right"></div>
         <div
           className={
-            "score right " +
+            "score right big " +
             (turn.id === p2.id ? "active" : "") +
             (time[p2.id] <= 5 ? " red" : "")
           }

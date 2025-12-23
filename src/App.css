@@ -155,8 +155,8 @@
 
 /* left + right score blocks */
 .score {
-  width: 110px;
-  height: 92px;
+  width: 220px;
+  height: 155px;
   position: relative;
   display: grid;
   place-items: center;
@@ -171,6 +171,12 @@
 }
 .active {
   opacity: 1;
+  color: white;
+}
+
+.big{
+  font-size: 4em;
+  font-weight: normal;
 }
 
 .red {

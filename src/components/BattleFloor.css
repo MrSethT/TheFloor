@@ -150,20 +150,19 @@ body {
 
 /* tiny “notches” where the center meets the score blocks */
 .join {
-  position: absolute;
-  top: 39px;
+  margin: 0px -20px 0px -20px;
   width: 34px;
-  height: 72px;
+  height: 160px;
   background: linear-gradient(var(--gold2), var(--gold));
   border: 4px solid var(--gold);
   box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.22);
 }
 .join.left {
-  left: 98px;
+  left: 205px;
   clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%, 28% 50%);
 }
 .join.right {
-  right: 98px;
+  right: 205px;
   clip-path: polygon(0 0, 100% 0, 72% 50%, 100% 100%, 0 100%, 28% 50%);
   opacity: 0.9;
   z-index: -1;
