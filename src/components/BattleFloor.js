@@ -228,7 +228,7 @@ const [playWrong] = useSound(wrongSfx);
         </div>
       </div>
 
-      <p className="footer">Y = Knew | X = Didn't know</p>
+      <p className="footer">Y = Got it | X = Passed</p>
     </div>
   );
 }

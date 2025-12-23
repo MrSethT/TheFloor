@@ -11,13 +11,15 @@ The game is built as a board of player tiles — each duel is played on a specif
   - Left - Orange
   - Right - Green
 - The game board shows a tile for each topic
-- Selecting a tile creates a **duel** using that topic
+- Selecting a tile creates a **duel** using that topic and enters the Battle Zone
 - In a duel:
   - a player from each team is chosen to duel
   - images are shown according to the topic
   - each player gets **30 personal seconds**
-  - a correct recognition awards a point and passes the turn
-  - an incorrect recognition shows the answer but does not pass the turn
+  - there is a 3 second coutndown then the battle begins 
+  - a correct recognition passes the turn
+  - an incorrect recognition does nothing
+  - if the player cannot determine the answer they may pass, this costs them 3 additional seconds on their personal timer
 - At the end of the round:
   - a winner is determined
   - the winner claims the tile
@@ -42,6 +44,16 @@ A duel ends when one of the following conditions is met:
 2. There are no more images in the category
 
 In either case — the game automatically returns to the arena board.
+
+---
+
+##  📸 Screenshots
+
+The Area
+![Alt text](/media/arena.png?raw=true "The Arena")
+
+The Battle Zone
+![Alt text](/media/battle.png?raw=true "The Battle Zone")
 
 ---
 
