@@ -19,7 +19,7 @@ The game is built as a board of player tiles — each duel is played on a specif
   - there is a 3 second coutndown then the battle begins 
   - a correct recognition passes the turn
   - an incorrect recognition does nothing
-  - if the player cannot determine the answer they may pass, this costs them 3 additional seconds on their personal timer
+  - if the player cannot determine the answer they may pass using the X key. This costs them 3 additional seconds on their personal timer
 - At the end of the round:
   - a winner is determined
   - the winner claims the tile
