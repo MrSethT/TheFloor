@@ -11,7 +11,8 @@ The game is built as a board of player tiles — each duel is played on a specif
   - Left - Orange
   - Right - Green
 - The game board shows a tile for each topic
-- Selecting a tile creates a **duel** using that topic and enters the Battle Zone
+- Clicking on a tile creates a **duel** using that topic and enters the Battle Zone
+- Shift+Clicking on a tile allows the host to change/correct who won that category in case of an error 
 - In a duel:
   - a player from each team is chosen to duel
   - images are shown according to the topic
@@ -33,7 +34,7 @@ The game is built as a board of player tiles — each duel is played on a specif
 
 - **Y** – the player identified the image correctly  
 - **X** – the player passes  
-- No on-screen buttons — the game is intended to be run quickly by a host
+- No on-screen buttons in the Battle Zone — the game is intended to be run quickly by a host
 
 ---
 
