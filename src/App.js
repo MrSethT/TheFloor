@@ -22,7 +22,17 @@ function App() {
     p2: players[1],
   });
 
-  const onTileClick = (tile) => {
+  const onTileClick = (tile, event) => {
+    // Check if shift key is pressed to change category owner
+    if (event && event.shiftKey) {
+      const nextOwner = tile.owner?.id === players[0].id ? players[1] : players[0];
+      const updatedBoard = board.map((item) =>
+        item.topic === tile.topic ? { ...item, owner: nextOwner } : item
+      );
+      setBoard(updatedBoard);
+      return;
+    }
+    
     setScreen("battle");
     setBattle({ p1: players[0], p2: players[1], topic: tile.topic });
   };

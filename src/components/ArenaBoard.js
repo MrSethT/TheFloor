@@ -6,7 +6,7 @@ export function ArenaBoard({ board, selected, onTileClick }) {
       {board.map((category) => (
         <div
           key={category.topic}
-          onClick={() => onTileClick(category)}
+          onClick={(event) => onTileClick(category,event)}
           className={"neon-box " + (category.owner ? category.owner.name:"")}
              style={{
             backgroundColor: category.owner ? category.owner.color : "",

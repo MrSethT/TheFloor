@@ -180,7 +180,7 @@ const [playWrong] = useSound(wrongSfx);
           <img
             src={current.src}
             alt={answer}
-            style={{ height: 300, objectFit: "cover" }}
+            style={{ height: 300, objectFit: "cover", backgroundColor: "#fff" }}
           />
         )
       )}
